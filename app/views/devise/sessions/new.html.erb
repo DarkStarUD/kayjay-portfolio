@@ -1,0 +1,36 @@
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 m-auto">
+        <div class="up-logo">
+          <p class="text-center m-b-50"><img src="assets/images/logo.png" width="100" alt=""></p>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="up-form">
+            <form method="post">
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: "current-password" , class: "form-control form-control-lg"%>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="form-group">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end %>
+              <div class="form-group">
+                <%= f.submit "Log in" , class: "btn btn-block btn-lg btn-round btn-brand" %>
+              </div>
+            </form>
+          </div>
+        <%end%>
+        <div class="up-help">
+          <p><a href="/password/new">Forgot your password?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
