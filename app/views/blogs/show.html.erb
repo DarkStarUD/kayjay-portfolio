@@ -33,6 +33,7 @@
                 </div>
                 <%= "<p></p><hr>".html_safe unless @blog.image.nil?%>
                 <p><%= markdown @blog.body%></p>
+                <p class="blog-post-meta"><%= "#{@blog.impressionist_count} views so far!" %></p>
             <%end%>
         </div>
     </section>

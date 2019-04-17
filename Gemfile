@@ -30,6 +30,9 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'redcarpet', '~> 3.4'
 gem 'pygments.rb', '~> 1.2', '>= 1.2.1'
 gem 'gritter', '~> 1.2'
+gem 'impressionist', '~> 1.6', '>= 1.6.1'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'social-share-button', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

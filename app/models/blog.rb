@@ -4,6 +4,9 @@ class Blog < ApplicationRecord
   enum status: { draft: 0, published: 1 }
   belongs_to :topic
   mount_uploader :image, ImageUploader
+  is_impressionable
+  acts_as_taggable 
+  
   rails_admin do
     field :name
     field :body, :simplemde

@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+    impressionist actions: [:show], unique: [:session_hash]
     before_action :set_blog, only: [:show, :toggle_status]
     before_action :set_topic, only: [:index, :search]
     before_action :set_user, only: [:index, :search]
@@ -10,6 +11,7 @@ class BlogsController < ApplicationController
     end
 
     def show 
+        impressionist(@blog, "message...")
     end
 
     def toggle_status
