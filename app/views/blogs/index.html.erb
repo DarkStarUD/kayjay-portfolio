@@ -1,0 +1,33 @@
+
+<div class="wrapper">
+    <section class="module">
+        <div class=" container">
+            <% @blogs.each do |blog|%>
+                <div class="blog-header">
+                    <% if blog.image.present?%>
+                    <div class="blog-cover" style='background: url(<%= blog.image%>); background-repeat: no-repeat;
+                    background-size: 100% 100%;'>
+                    <%end%>
+                    <div class"blog-author">
+                    <h3><%= @user.name%></h3>
+                    </div>
+                    <% if blog.image.present?%>
+                    </div>
+                    <%end%>
+                </div>
+
+                <div class="blog-body">
+                    <div>
+                    <h1 class="blog-post-title"><%= link_to blog.name.upcase, blog %></h1>
+                    </div>
+                    <div class="blog-summary">
+                    <p><%= markdown blog.body.truncate(300) %></p>
+                    </div>
+                    <div class="post-tags"><%= fa_icon "tags"%>
+                    </div>
+                </div>
+                </div>
+            <%end%>
+        </div>
+    </section>
+</div>

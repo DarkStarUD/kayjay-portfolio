@@ -15,101 +15,34 @@
   <!-- Page Header end-->
 
   <!-- Portfolio-->
-  <section class="module">
+  <section class="module" id="portfolio">
     <div class="container">
+      <h1 class="section-title">Portfolio</h1>
+      <div class="spacer"></div>
       <div class="row row-portfolio-filter m-b-30">
         <div class="col-md-12">
           <ul class="filters h5" id="filters">
             <li><a class="current" href="#" data-filter="*">All</a></li>
-            <li><a href="#" data-filter=".branding">Branding</a></li>
-            <li><a href="#" data-filter=".design">Design</a></li>
-            <li><a href="#" data-filter=".photo">Photo</a></li>
-            <li><a href="#" data-filter=".web">Web</a></li>
+            <% @categories.each do |category| %>
+            <li><a href="#" data-filter=<%="." + category.name.downcase %>><%= category.name.capitalize%></a></li>
+            <%end%>
           </ul>
         </div>
       </div>
-      <div class="row row-portfolio row-gutter" data-columns="3">
+      <div class="row row-portfolio row-gutter row-eq-height" data-columns="3">
         <div class="grid-sizer"></div>
-        <div class="portfolio-item branding photo undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Mutualismi</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        <% @portfolios.each do |portfolio|%>
+          <div class="portfolio-item <%= portfolio.category.name.downcase %> undefined">
+            <div class="portfolio-wrapper card h-100">
+              <%= image_tag "img-1.jpg" if portfolio.image.nil? %>
+              <%= image_tag portfolio.image.url, style: " display: block; width: 100%; height: 300px;"%>
+              <div class="portfolio-overlay"></div>
+              <div class="portfolio-caption">
+                <h5 class="portfolio-title"><%= portfolio.name%></h5>
+              </div><a class="portfolio-link" href=<%= portfolio.link %> target="_blank"></a>
+            </div>
           </div>
-        </div>
-        <div class="portfolio-item web design undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">The Perfume</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item photo web undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Bumblebee Icons</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item design branding undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Greedy Emperor</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item design photo undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Bluetooth Speaker</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item branding web undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Candy Icons</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item branding photo undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Mutualismi</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item web design undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">The Perfume</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
-        </div>
-        <div class="portfolio-item branding photo undefined">
-          <div class="portfolio-wrapper">
-            <%= image_tag "img-1.jpg" %>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Mutualismi</h5>
-            </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-          </div>
+        <%end%>
         </div>
       </div>
       <div class="row m-t-40">
@@ -118,6 +51,53 @@
         </div>
       </div>
     </div>
+  </section>
+  <!-- Portfolio end-->
+
+
+  <!-- blog-->
+  <section class="module" id="blog">
+    <div class="container">
+      <h1 class="section-title">Blogs</h1>
+      <div class="spacer"></div>
+        <div class="row">
+          <!-- Content-->
+          <div class="col-lg-8 m-auto">
+            <!-- Post-->
+            <% @blogs.each do |blog|%>
+              <article class="post">
+                <div class="post-preview">
+                <div class="blog-cover" style='background: url(<%= blog.image%>); background-repeat: no-repeat;
+                  background-size: 100% 100%;'>
+    
+                <a href="#"><img src="assets/images/blog/1.jpg" alt=""></a></div>
+                <div class="post-wrapper">
+                  <div class="post-header">
+                    <h2 class="post-title"><a href="blog-single.html"><%= blog.name %></a></h2>
+                    <ul class="post-meta h5">
+                      <li>November 18, 2016</li>
+                      <li><a href="#">Branding</a>, <a href="#">Design</a></li>
+                      <li><a href="#">3 Comments</a></li>
+                    </ul>
+                  </div>
+                  <div class="post-content">
+                    <p><%= markdown blog.body.truncate(100) %></p>
+                  </div>
+                  <div class="post-more"><%= link_to "Read More", blog_path(blog) %></div>
+                </div>
+              </article>
+              <!-- Post end-->
+            <%end%>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- Portfolio end-->
+
+  <!-- blog-->
+  <section class="module" id="contact">
+    <h1 class="section-title">Contact<h1>
+    <div class="spacer"></div>
   </section>
   <!-- Portfolio end-->
 </div>
