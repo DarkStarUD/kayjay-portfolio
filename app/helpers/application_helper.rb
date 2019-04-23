@@ -23,7 +23,7 @@ module ApplicationHelper
     end
     
     def alert_generator msg
-      js add_gritter(msg, title: "Eugene Wilkins III Portfolio", sticky: false)
+      js add_gritter(msg, title: "Kay Jay's Portfolio", sticky: false)
     end
     class HTMLwithPygments < Redcarpet::Render::HTML
       def block_code(code, language)
@@ -44,4 +44,8 @@ module ApplicationHelper
       }
       Redcarpet::Markdown.new(renderer, options).render(content).html_safe
     end
+
+  def gravatar_helper ref
+      image_tag "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(ref.email)}",class: "img-circle", width: 60
   end
+end

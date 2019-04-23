@@ -12,5 +12,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  petergate(roles: [:admin, :editor], multiple: false)      
+  petergate(roles: [:site_admin, :editor], multiple: false)    
+  has_many :comments, dependent: :destroy
+  has_many :links, dependent: :destroy  
 end

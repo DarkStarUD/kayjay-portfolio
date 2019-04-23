@@ -1,0 +1,54 @@
+<div class="col-lg-4">
+  <aside class="widget widget_search">
+     <%= form_tag search_blogs_path, method: :get, class: "navbar-form navbar-center", role: "search" do %>
+      <p>
+        <%=text_field_tag :search, params[:search], class: "form-control", placeholder: "Hit enter to search..." %>
+        <%= button_tag("Search", name: nil, class: "search-button") do%>
+          <%= fa_icon "search"%>
+        <%end%>
+      </p>
+    <%end%>   
+	</aside>
+  
+  <div class="sidebar">
+    <ol class="list-unstyled social-links">
+      <li>
+        <% @links.each do |link| %>
+          <a href=<%= link.url %> target="_blank" ><%= fa_icon link.name%></a>
+        <%end%>
+      </li>
+    </ol>
+  </div>
+ 
+  
+  <%unless @related_post.nil? %>
+    <div class="sidebar">
+      <aside class="widget widget_recent_entries_custom">
+        <div class="widget-title">
+  				<h5>Related Post</h5>
+  			</div>
+        <ol>
+          <% @related_post.each do |blog| %>
+            <%if  blog.id != @blog.id %>
+              <li class="clearfix"><%= link_to "#{blog.title}", blog_path(blog)%></li>
+            <%end%>
+          <%end%>
+        </ol>
+      </aside>
+    </div>
+  <%end%>
+
+	<div class="sidebar">
+		
+		<aside class="widget widget_tag_cloud">
+			<div class="widget-title">
+				<h5><%= fa_icon "tags"%> Tags</h5>
+			</div>
+			<div class="tagcloud">
+			  <% tag_cloud Blog.tag_counts, %w{s m l} do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <% end %>
+      </div>
+		</aside>
+	</div>
+</div>

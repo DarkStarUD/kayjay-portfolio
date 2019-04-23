@@ -1,40 +1,11 @@
-<div class="wrapper">
-    <section class="module">
-        <div class=" container">
-
-            <nav class="breadcrumb">
-            <%= link_to "Home", root_path, class: "breadcrumb-item" , style: "padding-right: 0.5rem;" %> |
-            <%= link_to "Blogs", blogs_path , style: "padding-left: 0.5rem; padding-right: 0.5rem;"%> |
-            <%=link_to "#{@blog.topic.name.capitalize}", blogs_path(:name => "#{@blog.topic.name}"), style: "padding-left: 0.5rem; padding-right: 0.5rem;"%> |
-            </nav>
-            
-            <% unless @blog.image?%>
-                <h2><%= @blog.name.capitalize%></h2>
-                <h4><%= fa_icon "th-list"%> <%=link_to "#{@blog.topic.name}", blogs_path(:name=> "#{@blog.topic.name}")%></h4>
-                <p><%= markdown @blog.body %></p>
-            <%else%>
-                <h2><%= @blog.name.capitalize %></h2>
-                <div class="container">
-                <div class="row">
-                <div class="col-md-7 blog-cover" style='background: url(<%= @blog.image unless @blog.image.nil?%>); background-repeat: no-repeat;
-                background-size: 100% 100%;'>
-                </div>
-                <div class="col-md-5"></div>
-                </div>
-                
-                <div class="row"> 
-                <div class="col-md-10">
-                <h4 class="category"><%= fa_icon "th-list"%> <%=link_to "#{@blog.topic.name.capitalize}", blogs_path(:name => "#{@blog.topic.name}")%></h4>
-                
-                </div>
-                <div class="col-md-2">
-                </div>
-                </div>
-                </div>
-                <%= "<p></p><hr>".html_safe unless @blog.image.nil?%>
-                <p><%= markdown @blog.body%></p>
-                <p class="blog-post-meta"><%= "#{@blog.impressionist_count} views so far!" %></p>
-            <%end%>
-        </div>
-    </section>
+<div class="col-sm-8 blog-main">
+  
+ <%= render 'blog_show'%>
+ 
+ <%= render 'comments/comment_form'%>
+ 
+ <div id="comments" data-blog-id="<%= @blog.id%>">
+  <%= render @blog.comments %>
+ </div>
+ 
 </div>
