@@ -42,6 +42,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (6.0.0)
+      activerecord (~> 5.0)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     archive-zip (0.12.0)
@@ -130,6 +132,8 @@ GEM
       tilt
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     io-like (0.3.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -162,6 +166,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mail_form (1.7.1)
+      actionmailer (>= 3.2, < 6)
+      activemodel (>= 3.2, < 6)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
@@ -239,6 +246,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
+    redis (3.3.5)
     regexp_parser (1.4.0)
     remotipart (1.4.2)
     responders (2.4.1)
@@ -270,6 +278,8 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
     simplemde_rails (0.1.0)
+    social-share-button (1.2.0)
+      coffee-rails
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -310,6 +320,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 6.0)
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3, >= 4.3.1)
   byebug
@@ -324,10 +335,13 @@ DEPENDENCIES
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
   friendly_id (~> 5.2, >= 5.2.5)
   gritter (~> 1.2)
+  impressionist (~> 1.6, >= 1.6.1)
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
+  kaminari (~> 1.1, >= 1.1.1)
   listen (>= 3.0.5, < 3.2)
+  mail_form (~> 1.7, >= 1.7.1)
   mini_magick (~> 4.9, >= 4.9.3)
   petergate (~> 2.0, >= 2.0.1)
   pg (>= 0.18, < 2.0)
@@ -337,8 +351,10 @@ DEPENDENCIES
   rails_admin (~> 1.4, >= 1.4.2)
   rails_admin_simplemde (~> 0.1.0.1)
   redcarpet (~> 3.4)
+  redis (~> 3.3, >= 3.3.3)
   sass-rails (~> 5.0)
   selenium-webdriver
+  social-share-button (~> 1.2)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

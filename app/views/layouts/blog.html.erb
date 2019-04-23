@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title> <%= @page_title%></title></title>
+    <%= csrf_meta_tags %>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu" rel="stylesheet">
+    
+    <meta name="keywords" content="<%= @seo_keywords %>" />
+    
+    
+    <%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+     <%= render 'shared/nav'%>
+     <br>
+     <br>
+     <br>
+     <%= render 'shared/blog_masthead'%>
+    <div class="container">
+
+      <div class="row">
+
+        <%= yield %>
+        
+        <%= render 'shared/blog_sidebar' %>
+      </div>
+      
+      
+       <%= alerts%>
+    </div>
+    <%= render 'shared/footer'%>
+  </body>
+</html>
+
+<script>
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.9)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+}
+
+$(document).ready(function() {
+  var simplemde;
+  return new SimpleMDE({ element: document.getElementById("blog-body") });
+});
+
+</script>

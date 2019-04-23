@@ -1,0 +1,55 @@
+ <section class="module" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="module-title text-center">
+          <h1 class="section-title">Contact<h1>
+          <div class="spacer"></div>
+          <h2>Let´s Talk</h2>
+          <p class="font-serif">Please feel free to get in touch anytime.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <form id="contact-form" method="post" novalidate>
+          <%= form_for  @contact do |f| %>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.text_field :name, class:"form-control input-lg", id:"name", name:"name", placeholder:"Name",required: true %>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                <%= f.email_field :email, class:"form-control input-lg", name:"email", id:"email", placeholder:"Email", required: true%>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= f.text_area :message, as: :text, class:"form-control input-lg", rows:"5", id:"comment", name:"message" , placeholder:"Type Your Message/Feedback here...", required: true%>
+                </div>
+              </div>
+
+              <div class="hidden">
+                  <%= f.label :nickname %><br>
+                  <%= f.text_field :nickname, hint: 'leave this field blank', class:"form-control"  %>
+              </div>
+              <div class="col-md-12">
+                <div class="text-center">
+                  <%= f.submit 'Send', class: "btn btn-round btn-brand" %>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        </form>
+        <!-- Ajax response-->
+        <div class="ajax-response text-center" id="contact-response"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact end-->

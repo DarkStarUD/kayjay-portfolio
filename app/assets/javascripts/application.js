@@ -18,6 +18,24 @@
 //= require popper
 //= required custom.js
 //= required plugin.js
-
+//= require cable
+//= require turbolinks
 //= require_tree .
 //= require bootstrap
+
+document.addEventListener('turbolinks:click', function (event) {
+  var anchorElement = event.target
+  var isSamePageAnchor = (
+    anchorElement.hash &&
+    anchorElement.origin === window.location.origin &&
+    anchorElement.pathname === window.location.pathname
+  )
+  
+  if (isSamePageAnchor) {
+    Turbolinks.controller.pushHistoryWithLocationAndRestorationIdentifier(
+      event.data.url,
+      Turbolinks.uuid()
+    )
+    event.preventDefault()
+  }
+})

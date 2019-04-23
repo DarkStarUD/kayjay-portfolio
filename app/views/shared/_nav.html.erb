@@ -1,7 +1,7 @@
 <header class="header header-center undefined">
     <div class="container-fluid">
         <!-- Logos-->
-        <div class="inner-header"><a class="inner-brand" href="index.html"><%= image_tag "logo.png", class: "brand-dark", width: "77px", alt:""%> <%= image_tag "logo-light.png", class: "brand-light", width: "77px", alt: ""%>
+        <div class="inner-header"><%= link_to '', root_path , class:"inner-brand"%> <%= image_tag "logo.png", class: "brand-dark", width: "77px", alt:""%> <%= image_tag "logo-light.png", class: "brand-light", width: "77px", alt: ""%>
                 <!-- Or simple text-->
                 <!-- Core--></a></div>
         <!-- Navigation-->
@@ -9,10 +9,12 @@
             <div class="inner-navigation-inline">
                 <div class="inner-nav">
                     <ul>
-                        <li class="menu-item-has-children menu-item-has-mega-menu"><%= link_to "Home", root_path%></li>
+                        <li class="menu-item-has-children menu-item-has-mega-menu"><%= link_to "Home", root_path(anchor: 'home')%></li>
                         <li class="menu-item-has-children"><%= link_to "Portfolio", root_path(anchor: 'portfolio')%></li>
                         <li class="menu-item-has-children"><%= link_to "Blog", root_path(anchor: 'blog') %></li>
                         <li class="menu-item-has-children"><%= link_to "Contact", root_path(anchor: 'contact') %></li>
+                        <li><%= login_helper 'menu-item-has-children' %></li>
+                        <%= link_to "Admin", rails_admin_path, class: 'menu-item-has-children' if logged_in?(:site_admin)%>
                     </ul>
                 </div>
             </div>

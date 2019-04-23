@@ -1,0 +1,6 @@
+<nav class="breadcrumb">
+  <% @topics.each do |topic| %>
+      <%=link_to "#{topic.name}", blogs_path(:name => "#{topic.name}")%> |
+  <%end%>
+</nav>
+<br>
