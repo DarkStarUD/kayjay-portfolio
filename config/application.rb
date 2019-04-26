@@ -18,7 +18,6 @@ Bundler.require(*Rails.groups)
 
 module KayProfile
   class Application < Rails::Application
-    config.eager_load_paths << "#{Rails.root}/lib"
     config.assets.initialize_on_precompile = false
   end
 end
