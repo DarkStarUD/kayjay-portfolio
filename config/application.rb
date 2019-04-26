@@ -20,6 +20,5 @@ module KayProfile
   class Application < Rails::Application
     config.eager_load_paths << "#{Rails.root}/lib"
     config.secret_key_base = ENV["SECRET_KEY_BASE"]
-    config.assets.initialize_on_precompile = false
   end
 end
