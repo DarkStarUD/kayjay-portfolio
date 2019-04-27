@@ -75,9 +75,9 @@
                   <div class="post-header">
                     <h2 class="post-title"><%= link_to blog.name, blog_path(blog) %></h2>
                     <ul class="post-meta h5">
-                      <li>November 18, 2016</li>
-                      <li><a href="#">Branding</a>, <a href="#">Design</a></li>
-                      <li><a href="#">3 Comments</a></li>
+                      <li><%= blog.created_at.strftime(" %B %d, %Y") %></li>
+                      <li><%= link_to blog.topic.name, blogs_path(:name => "#{blog.topic.name}")  %></li>
+                      <li><a href="#"><%= blog.comments.count%> Comments</a></li>
                     </ul>
                   </div>
                   <div class="post-content">
