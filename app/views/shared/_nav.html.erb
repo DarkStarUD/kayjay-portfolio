@@ -14,7 +14,7 @@
                         <li class="menu-item-has-children"><%= link_to "Blog", root_path(anchor: 'blog') %></li>
                         <li class="menu-item-has-children"><%= link_to "Contact", root_path(anchor: 'contact') %></li>
                         <li><%= login_helper 'menu-item-has-children' %></li>
-                        <li class="menu-item-has-children"> <%= link_to "Admin", rails_admin_path if logged_in?(:site_admin)%></li>
+                        <% if logged_in?(:site_admin)%> <li class="menu-item-has-children"> <%= link_to "Admin", rails_admin_path %></li><%end%>
                     </ul>
                 </div>
             </div>
