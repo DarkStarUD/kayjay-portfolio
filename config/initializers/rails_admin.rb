@@ -1,7 +1,14 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-
+  config.authorize_with do
+    unless logged_in?(:site_admin)
+      redirect_to(
+        main_app.root_path,
+        alert: "You are not permitted to view this page"
+      )
+    end
+  end
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
