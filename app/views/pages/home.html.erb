@@ -39,7 +39,17 @@
               <div class="portfolio-overlay"></div>
               <div class="portfolio-caption">
                 <h5 class="portfolio-title"><%= portfolio.name%></h5>
-              </div><a class="portfolio-link" href=<%= portfolio.link %> target="_blank"></a>
+                <% if portfolio.portfolio_links.present? %>
+                <h5>Listen to it on</h5>
+                  <ol class="list-unstyled social-links">
+                    <li>
+                      <% portfolio.portfolio_links.each do |link| %>
+                        <a href=<%= link.url %> target="_blank" ><%= fa_icon link.name%></a>
+                      <%end%>
+                    </li>
+                  </ol>
+                <%end%>
+              </div><% if portfolio.portfolio_links.empty? %><a class="portfolio-link" href=<%= portfolio.link %> target="_blank"></a><%end%>
             </div>
           </div>
         <%end%>
