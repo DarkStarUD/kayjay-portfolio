@@ -110,5 +110,7 @@
   <!-- Portfolio end-->
 
   <!-- blog-->
- <%= render 'contacts/form'%>
+  <% if logged_in?(:site_admin)%>
+    <%= render 'contacts/form'%>
+  <%end%>
  

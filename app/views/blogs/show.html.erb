@@ -2,10 +2,12 @@
   
  <%= render 'blog_show'%>
  
+ <% if logged_in?(:site_admin)%>
  <%= render 'comments/comment_form'%>
  
  <div id="comments" data-blog-id="<%= @blog.id%>">
   <%= render @blog.comments %>
  </div>
+ <%end%>
  
 </div>
